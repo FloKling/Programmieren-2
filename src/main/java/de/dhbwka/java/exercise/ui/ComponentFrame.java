@@ -22,7 +22,7 @@ public class ComponentFrame extends JFrame {
 
     public ComponentFrame() {
         super();
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setSize(700, 100);
         setTitle("");
 
