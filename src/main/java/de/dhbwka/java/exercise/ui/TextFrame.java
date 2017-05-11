@@ -25,14 +25,12 @@ public class TextFrame extends JFrame {
 
         List<String> linesToDisplay = readFile();
 
-
         JTextArea textArea = new JTextArea();
 
         for (String line : linesToDisplay) {
             textArea.append(line);
             textArea.append(System.lineSeparator());
         }
-
 
         add(textArea);
 
@@ -45,10 +43,8 @@ public class TextFrame extends JFrame {
     private java.util.List<String> readFile() {
         java.util.List<String> lines = new ArrayList<String>();
         try (FileReader fileReader = new FileReader(new File(fileName)); BufferedReader bufferedReader = new BufferedReader(fileReader)) {
-            System.out.println(bufferedReader.readLine());
             String thisLine;
             while ((thisLine = bufferedReader.readLine()) != null) {
-                System.out.println(thisLine);
                 lines.add(thisLine);
             }
         } catch (IOException e) {
@@ -58,22 +54,25 @@ public class TextFrame extends JFrame {
         return lines;
     }
 
-    public static void main(String[] args) {
-//        try (Scanner scanner = new Scanner(System.in)) {
-//            System.out.println("Wie breit soll das Fenster sein");
-//            int width = scanner.nextInt();
-//            System.out.println("Wie hoch soll das Fenster sein");
-//            int height = scanner.nextInt();
-//            System.out.println("Welche Datei soll eingelesen werden?");
-//            String fileName = scanner.next();
-//
-//
-//            new TextFrame(width, height, fileName);
-//        }
+    public static void main(String[] args) throws IOException {
+        if (args.length != 3) {
+            System.err.println("Wrong argument size");
+            return;
+        }
 
-        int width = Integer.parseInt(args[0]);
-        int height = Integer.parseInt(args[1]);
+        int width = 400, height = 400;
+        try {
+            width = Integer.parseInt(args[0]);
+            height = Integer.parseInt(args[1]);
+        } catch (NumberFormatException e) {
+            System.err.println("You didn't enter Numbers");
+        }
+
+
         String fileName = args[2];
+        File file = new File(fileName);
+        if (!file.exists())
+            throw new IOException("GIBTS NICHT");
 
 
         new TextFrame(width, height, fileName);
