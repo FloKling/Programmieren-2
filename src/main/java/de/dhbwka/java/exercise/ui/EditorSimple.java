@@ -9,133 +9,71 @@ public class EditorSimple extends JFrame {
 
     public EditorSimple() {
         JMenuBar menuBar;
-        JMenu menu, submenu;
-        JMenuItem menuItem;
-
+        JMenu fileMenu, editMenu, sendToSubMenu;
         menuBar = new JMenuBar();
 
-        menu = new JMenu("Datei");
-        menuBar.add(menu);
-        menuItem = new JMenuItem("Neu");
-        menu.add(menuItem);
-        menuItem = new JMenuItem("Öffnen");
-        menu.add(menuItem);
-
-        menu.addSeparator();
-        menuItem = new JMenuItem("Schließen");
-        menu.add(menuItem);
-        menu.addSeparator();
-
-        menuItem = new JMenuItem("Speichern");
-        menu.add(menuItem);
-        menuItem = new JMenuItem("Speichern unter...");
-        menu.add(menuItem);
-        menuItem = new JMenuItem("Als Webseite speichern");
-        menu.add(menuItem);
-        menuItem = new JMenuItem("Suchen");
-        menu.add(menuItem);
-
-        menu.addSeparator();
-
-        menuItem = new JMenuItem("Seite einrichten");
-        menu.add(menuItem);
-        menuItem = new JMenuItem("Seitenansicht");
-        menu.add(menuItem);
-        menuItem = new JMenuItem("Drucken");
-        menu.add(menuItem);
-
-        menu.addSeparator();
+        sendToSubMenu = new JMenu("Senden an") {{
+            add(new JMenuItem("Email-Empfänger"));
+            add(new JMenuItem("Email-Empfänger (zur Überarbeitung)"));
+            add(new JMenuItem("Email-Empfänger (als Anlage)"));
+            addSeparator();
+            add(new JMenuItem("Verteilerempfänger"));
+            add(new JMenuItem("Onlinebesrechungsteilnehmer"));
+            add(new JMenuItem("Exchange-Ordner..."));
+            add(new JMenuItem("Fax-Empfänger..."));
+            addSeparator();
+            add(new JMenuItem("Microsoft Powerpoint"));
+        }};
 
 
-        // SUBMENU
-        submenu = new JMenu("Senden an");
+        fileMenu = new JMenu("Datei") {{
+            add(new JMenuItem("Neu"));
+            add(new JMenuItem("Öffnen"));
+            addSeparator();
+            add(new JMenuItem("Schließen"));
+            addSeparator();
+            add(new JMenuItem("Speichern"));
+            add(new JMenuItem("Speichern unter..."));
+            add(new JMenuItem("Als Webseite speichern"));
+            add(new JMenuItem("Suchen"));
+            addSeparator();
+            add(new JMenuItem("Versionen"));
+            addSeparator();
+            add(new JMenuItem("Webseitenvorschau"));
+            addSeparator();
+            add(new JMenuItem("Seite einrichten"));
+            add(new JMenuItem("Seitenansicht"));
+            add(new JMenuItem("Drucken"));
+            add(sendToSubMenu);
+            add(new JMenuItem("Eigenschaften"));
+            add(new JMenuItem("Beenden"));
+        }};
+        menuBar.add(fileMenu);
 
-        menuItem = new JMenuItem("Email-Empfänger");
-        submenu.add(menuItem);
-        menuItem = new JMenuItem("Email-Empfänger (zur Überarbeitung)");
-        submenu.add(menuItem);
-        menuItem = new JMenuItem("Email-Empfänger (als Anlage)");
-        submenu.add(menuItem);
-
-        submenu.addSeparator();
-
-        menuItem = new JMenuItem("Verteilerempfänger");
-        submenu.add(menuItem);
-        menuItem = new JMenuItem("Onlinebesrechungsteilnehmer");
-        submenu.add(menuItem);
-        menuItem = new JMenuItem("Exchange-Ordner...");
-        submenu.add(menuItem);
-        menuItem = new JMenuItem("Fax-Empfänger...");
-        submenu.add(menuItem);
-
-        submenu.addSeparator();
-
-        menuItem = new JMenuItem("Microsoft Powerpoint");
-        submenu.add(menuItem);
-
-        menu.add(submenu);
-
-        menuItem = new JMenuItem("Eigenschaften");
-        menu.add(menuItem);
-
-        menu.addSeparator();
-        menu.addSeparator();
-
-        menuItem = new JMenuItem("Beenden");
-        menu.add(menuItem);
-
-
-
-        //Build second menu in the menu bar.
-        menu = new JMenu("Bearbeiten");
-
-        menuItem = new JMenuItem("Rückgängig");
-        menu.add(menuItem);
-        menuItem = new JMenuItem("Wiederholen");
-        menu.add(menuItem);
-
-        menu.addSeparator();
-
-        menuItem = new JMenuItem("Ausschneiden");
-        menu.add(menuItem);
-        menuItem = new JMenuItem("Kopieren");
-        menu.add(menuItem);
-        menuItem = new JMenuItem("Office-Zwischenablage");
-        menu.add(menuItem);
-        menuItem = new JMenuItem("Einfügen");
-        menu.add(menuItem);
-        menuItem = new JMenuItem("Inhalte einfügen");
-        menu.add(menuItem);
-        menuItem = new JMenuItem("Als Hyperlink einfügen");
-        menu.add(menuItem);
-
-        menu.addSeparator();
-
-        menuItem = new JMenuItem("Löschen");
-        menu.add(menuItem);
-        menuItem = new JMenuItem("Alles markieren");
-        menu.add(menuItem);
-
-        menu.addSeparator();
-
-        menuItem = new JMenuItem("Suchen");
-        menu.add(menuItem);
-        menuItem = new JMenuItem("Ersetzen");
-        menu.add(menuItem);
-        menuItem = new JMenuItem("Gehe zu");
-        menu.add(menuItem);
-
-        menu.addSeparator();
-
-        menuItem = new JMenuItem("Verknüpfungen");
-        menu.add(menuItem);
-        menuItem = new JMenuItem("Objekt");
-        menu.add(menuItem);
-
-        menuBar.add(menu);
+        editMenu = new JMenu("Bearbeiten") {{
+            add(new JMenuItem("Rückgängig"));
+            add(new JMenuItem("Wiederholen"));
+            addSeparator();
+            add(new JMenuItem("Ausschneiden"));
+            add(new JMenuItem("Kopieren"));
+            add(new JMenuItem("Office-Zwischenablage"));
+            add(new JMenuItem("Einfügen"));
+            add(new JMenuItem("Inhalte einfügen"));
+            add(new JMenuItem("Als Hyperlink einfügen"));
+            addSeparator();
+            add(new JMenuItem("Löschen"));
+            add(new JMenuItem("Alles markieren"));
+            addSeparator();
+            add(new JMenuItem("Suchen"));
+            add(new JMenuItem("Ersetzen"));
+            add(new JMenuItem("Gehe zu"));
+            addSeparator();
+            add(new JMenuItem("Verknüpfungen"));
+            add(new JMenuItem("Objekt"));
+        }};
+        menuBar.add(editMenu);
 
         setJMenuBar(menuBar);
-
 
         setVisible(true);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);

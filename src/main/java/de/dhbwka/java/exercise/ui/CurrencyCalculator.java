@@ -25,7 +25,6 @@ public class CurrencyCalculator extends JFrame {
 
         panel.add(textField, BorderLayout.NORTH);
 
-
         eurToUsdButton = new JButton("EUR to USD");
         usdToEurButton = new JButton("USD to EUR");
         cancelButton = new JButton("Abbrechen");
@@ -36,39 +35,18 @@ public class CurrencyCalculator extends JFrame {
         panel.add(usdToEurButton, BorderLayout.CENTER);
         panel.add(cancelButton, BorderLayout.EAST);
 
-
         add(panel);
         setSize(400, 100);
         setVisible(true);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Currency Calculator");
     }
 
     private void addButtonListeners() {
-        cancelButton.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.exit(-1);
-            }
-        });
-
-        eurToUsdButton.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        });
-
-        usdToEurButton.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        });
+        cancelButton.addActionListener(f -> System.exit(-1));
+        eurToUsdButton.addActionListener(f -> {});
+        usdToEurButton.addActionListener(f -> {});
     }
-
 
     public static void main(String[] args) {
         new CurrencyCalculator();

@@ -2,7 +2,6 @@ package de.dhbwka.java.exercise.ui;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileFilter;
-import java.awt.*;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -64,8 +63,9 @@ public class TextfileViewer {
         if (state == JFileChooser.APPROVE_OPTION) {
             filePath = fc.getSelectedFile().getAbsolutePath();
             if (!filePath.isEmpty()) {
-//                addLabelsToPane(readFile());
-                addLinesToTextArea(readFile());
+                new TextFrame(400, 400, filePath);
+                addLabelsToPane(readFile());
+//                addLinesToTextArea(readFile());
             }
             System.out.println(fc.getSelectedFile().getAbsolutePath());
         } else {
