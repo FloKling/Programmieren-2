@@ -1,7 +1,8 @@
 package de.dhbwka.java.exercise.ui;
 
 import javax.swing.*;
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.HeadlessException;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -25,14 +26,17 @@ public class TextFrame extends JFrame {
 
         List<String> linesToDisplay = readFile();
 
+        JPanel panel = new JPanel(new BorderLayout());
+
         JTextArea textArea = new JTextArea();
 
         for (String line : linesToDisplay) {
             textArea.append(line);
             textArea.append(System.lineSeparator());
         }
+        panel.add(textArea);
 
-        add(textArea);
+        add(panel);
 
         setTitle(fileName);
         setSize(width, height);
@@ -40,8 +44,8 @@ public class TextFrame extends JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
-    private java.util.List<String> readFile() {
-        java.util.List<String> lines = new ArrayList<String>();
+    private List<String> readFile() {
+        List<String> lines = new ArrayList<>();
         try (FileReader fileReader = new FileReader(new File(fileName)); BufferedReader bufferedReader = new BufferedReader(fileReader)) {
             String thisLine;
             while ((thisLine = bufferedReader.readLine()) != null) {
@@ -72,7 +76,7 @@ public class TextFrame extends JFrame {
         String fileName = args[2];
         File file = new File(fileName);
         if (!file.exists())
-            throw new IOException("GIBTS NICHT");
+            throw new IOException("The file does not exist");
 
 
         new TextFrame(width, height, fileName);
