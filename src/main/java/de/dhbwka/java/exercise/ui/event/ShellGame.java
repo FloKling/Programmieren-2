@@ -10,29 +10,19 @@ import java.util.ArrayList;
  */
 public class ShellGame extends JFrame {
 
-    public static final String FILE_NAME = "files/ergebnisse.txt";
+    private static final String FILE_NAME = "files/ergebnisse.huetchenspiel.txt";
 
-    private JPanel panel;
     private JPanel namePanel;
     private JPanel buttonPanel;
-    private JPanel statisticPanel;
     private JPanel footerPanel;
-    private JLabel nameLabel;
     private JTextField nameTextField;
     private JTextField resultTextField;
-    private JButton shellOne;
-    private JButton shellTwo;
-    private JButton shellThree;
-    private JButton statistic;
-    private JButton exit;
 
     private int attemps = 0;
 
-    private BorderLayout borderLayout;
-
     public ShellGame() {
-        borderLayout = new BorderLayout(5, 5);
-        panel = new JPanel(borderLayout);
+        BorderLayout borderLayout = new BorderLayout(5, 5);
+        JPanel panel = new JPanel(borderLayout);
 
         initNamePanel();
         initButtonPanel();
@@ -60,20 +50,20 @@ public class ShellGame extends JFrame {
         buttonPanel = new JPanel(new BorderLayout());
         GridLayout gridLayout = new GridLayout(1, 3);
         JPanel actionButtonPanel = new JPanel(gridLayout);
-        shellOne = new JButton("Hütchen 1");
+        JButton shellOne = new JButton("Hütchen 1");
         shellOne.addActionListener(f -> play(1));
-        shellTwo = new JButton("Hütchen 2");
+        JButton shellTwo = new JButton("Hütchen 2");
         shellTwo.addActionListener(shell -> play(2));
-        shellThree = new JButton("Hütchen 3");
+        JButton shellThree = new JButton("Hütchen 3");
         shellThree.addActionListener(shell -> play(3));
 
         actionButtonPanel.add(shellOne);
         actionButtonPanel.add(shellTwo);
         actionButtonPanel.add(shellThree);
 
-        statisticPanel = new JPanel(new BorderLayout());
-        statistic = new JButton("Statistik");
-        exit = new JButton("Beenden");
+        JPanel statisticPanel = new JPanel(new BorderLayout());
+        JButton statistic = new JButton("Statistik");
+        JButton exit = new JButton("Beenden");
         exit.addActionListener(f -> System.exit(0));
         statistic.addActionListener(f -> getStatisticFromFile());
 
@@ -108,17 +98,13 @@ public class ShellGame extends JFrame {
 
     private void initNamePanel() {
         namePanel = new JPanel(new BorderLayout());
-        nameLabel = new JLabel("Spielername");
+        JLabel nameLabel = new JLabel("Spielername");
         nameTextField = new JTextField();
         namePanel.add(nameLabel, BorderLayout.WEST);
         namePanel.add(nameTextField, BorderLayout.CENTER);
     }
 
-    public static void main(String[] args) {
-        new ShellGame();
-    }
-
-    public void getStatisticFromFile() {
+    private void getStatisticFromFile() {
         java.util.List<Integer> results = new ArrayList<>();
         try (FileReader fileReader = new FileReader(new File(FILE_NAME)); BufferedReader bufferedReader = new BufferedReader(fileReader)) {
             String line = null;
@@ -138,5 +124,10 @@ public class ShellGame extends JFrame {
 
             resultTextField.setText("Erfolg nach durchschnittlich " + total.doubleValue() / results.size() + " Versuchen");
         }
+    }
+
+
+    public static void main(String[] args) {
+        new ShellGame();
     }
 }

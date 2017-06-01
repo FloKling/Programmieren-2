@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c9044118-6de3-43a2-945a-7e9dce4cc5f9" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/de/dhbwka/java/exercise/ui/EditorSimple$2$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/de/dhbwka/java/exercise/ui/EditorSimple$2$2$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/de/dhbwka/java/exercise/ui/EditorSimple$2$2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/de/dhbwka/java/exercise/ui/EditorSimple$2$3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/de/dhbwka/java/exercise/ui/EditorSimple$2$4.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/dhbwka/java/exercise/ui/EditorSimple.java" afterPath="$PROJECT_DIR$/src/main/java/de/dhbwka/java/exercise/ui/EditorSimple.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/files/ergebnisse.txt" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/de/dhbwka/java/exercise/ui/event/ShellGame.class" afterPath="$PROJECT_DIR$/target/classes/de/dhbwka/java/exercise/ui/event/ShellGame.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/dhbwka/java/exercise/ui/event/ShellGame.java" afterPath="$PROJECT_DIR$/src/main/java/de/dhbwka/java/exercise/ui/event/ShellGame.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -64,12 +61,12 @@
       <file leaf-file-name="ShellGame.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/dhbwka/java/exercise/ui/event/ShellGame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="519">
-              <caret line="138" column="95" lean-forward="true" selection-start-line="138" selection-start-column="95" selection-end-line="138" selection-end-column="95" />
+            <state relative-caret-position="382">
+              <caret line="124" column="79" lean-forward="true" selection-start-line="124" selection-start-column="79" selection-end-line="124" selection-end-column="79" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#3846#3847#0" expanded="true" />
-                <element signature="e#3877#3878#0" expanded="true" />
+                <element signature="e#4561#4562#0" expanded="true" />
+                <element signature="e#4592#4593#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -879,12 +876,12 @@
       <workItem from="1495103799621" duration="35000" />
       <workItem from="1496297539365" duration="1046000" />
       <workItem from="1496298659542" duration="615000" />
-      <workItem from="1496299290983" duration="5119000" />
+      <workItem from="1496299290983" duration="5829000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26392000" />
+    <option name="totallyTimeSpent" value="27102000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="1101" extended-state="0" />
@@ -938,14 +935,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/dhbwka/java/exercise/ui/ComponentFrame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" column="19" lean-forward="true" selection-start-line="30" selection-start-column="19" selection-end-line="30" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/dhbwka/java/exercise/ui/TextfileViewer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="810">
@@ -1351,14 +1340,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/files/ergebnisse.huetchenspiel.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="5" lean-forward="false" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/dhbwka/java/exercise/ui/event/ShellGame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="519">
-          <caret line="138" column="95" lean-forward="true" selection-start-line="138" selection-start-column="95" selection-end-line="138" selection-end-column="95" />
+        <state relative-caret-position="382">
+          <caret line="124" column="79" lean-forward="true" selection-start-line="124" selection-start-column="79" selection-end-line="124" selection-end-column="79" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3846#3847#0" expanded="true" />
-            <element signature="e#3877#3878#0" expanded="true" />
+            <element signature="e#4561#4562#0" expanded="true" />
+            <element signature="e#4592#4593#0" expanded="true" />
           </folding>
         </state>
       </provider>
