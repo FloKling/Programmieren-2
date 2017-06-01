@@ -11,3 +11,5 @@ genw
 src/main/resources/
 src/test/
 target/generated-sources/
+*.class
+target
