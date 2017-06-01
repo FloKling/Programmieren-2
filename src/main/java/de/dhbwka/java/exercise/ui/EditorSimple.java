@@ -6,7 +6,6 @@ import java.awt.event.ActionEvent;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
-import java.io.PrintWriter;
 import java.net.URISyntaxException;
 
 /**
@@ -45,6 +44,20 @@ public class EditorSimple extends JFrame {
             add(new JMenuItem("Microsoft Powerpoint"));
         }};
 
+        JMenuItem saveItem = new JMenuItem("Speichern") {{
+            setEnabled(false);
+
+            addActionListener((ActionEvent f) -> {
+                String text = textPane.getText();
+                try (PrintStream printStream = new PrintStream(new File(textPane.getPage().toURI()))) {
+                    printStream.print(text);
+                } catch (FileNotFoundException | URISyntaxException e) {
+                    e.printStackTrace();
+                }
+
+            });
+        }};
+
 
         fileMenu = new JMenu("Datei") {{
             add(new JMenuItem("Neu") {{
@@ -54,7 +67,6 @@ public class EditorSimple extends JFrame {
             }});
             add(new JMenuItem("Öffnen") {{
                 addActionListener(f -> {
-                    System.out.println("clicked");
                     JFileChooser fc = new JFileChooser();
                     fc.setFileFilter(new FileFilter() {
 
@@ -77,6 +89,7 @@ public class EditorSimple extends JFrame {
                         File file = fc.getSelectedFile();
                         try {
                             textPane.setPage(file.toURI().toURL());
+                            saveItem.setEnabled(true);
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
@@ -90,22 +103,15 @@ public class EditorSimple extends JFrame {
             }});
             addSeparator();
             add(new JMenuItem("Schließen") {{
-                addActionListener(f -> System.exit(0));
-            }});
-            addSeparator();
-            add(new JMenuItem("Speichern") {{
-                addActionListener((ActionEvent f) -> {
-                    String text = textPane.getText();
-                    try (PrintStream printStream = new PrintStream(new File(textPane.getPage().toURI()))){
-                        printStream.print(text);
-                    } catch (FileNotFoundException e) {
-                        e.printStackTrace();
-                    } catch (URISyntaxException e) {
-                        e.printStackTrace();
+                addActionListener(f -> {
+                    int result = JOptionPane.showConfirmDialog(null, "Wollen sie das Programm wirklich beenden?");
+                    if (result == JOptionPane.OK_OPTION) {
+                        System.exit(0);
                     }
-
                 });
             }});
+            addSeparator();
+            add(saveItem);
             add(new JMenuItem("Speichern unter..."));
             add(new JMenuItem("Als Webseite speichern"));
             add(new JMenuItem("Suchen"));
