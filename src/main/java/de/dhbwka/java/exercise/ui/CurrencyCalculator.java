@@ -2,8 +2,6 @@ package de.dhbwka.java.exercise.ui;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
  * Created by floriankling on 18.05.17.
@@ -43,9 +41,26 @@ public class CurrencyCalculator extends JFrame {
     }
 
     private void addButtonListeners() {
-        cancelButton.addActionListener(f -> System.exit(-1));
-        eurToUsdButton.addActionListener(f -> {});
-        usdToEurButton.addActionListener(f -> {});
+        cancelButton.addActionListener(f -> System.exit(0));
+        eurToUsdButton.addActionListener(f -> {
+            Double value = validateTextFieldValue();
+            if (value != null)
+                textField.setText(String.valueOf(value * 1.14));
+        });
+        usdToEurButton.addActionListener(f -> {
+            Double value = validateTextFieldValue();
+            if (value != null)
+                textField.setText(String.valueOf(value / 1.14));
+        });
+    }
+
+    private Double validateTextFieldValue() {
+        try {
+            return Double.parseDouble(textField.getText());
+        } catch (Exception e) {
+            textField.setText("Keine gültige Zahl");
+            return null;
+        }
     }
 
     public static void main(String[] args) {

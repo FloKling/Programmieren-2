@@ -1,13 +1,33 @@
 package de.dhbwka.java.exercise.ui;
 
 import javax.swing.*;
+import javax.swing.filechooser.FileFilter;
+import java.awt.event.ActionEvent;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintStream;
+import java.io.PrintWriter;
+import java.net.URISyntaxException;
 
 /**
  * Created by floriankling on 18.05.17.
  */
 public class EditorSimple extends JFrame {
 
+    private JTextPane textPane;
+    private JScrollPane scrollPane;
+
     public EditorSimple() {
+        textPane = new JTextPane();
+        scrollPane = new JScrollPane(textPane);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        getContentPane().add(scrollPane);
+
+        this.setSize(640, 480);
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        this.setVisible(true);
+
+
         JMenuBar menuBar;
         JMenu fileMenu, editMenu, sendToSubMenu;
         menuBar = new JMenuBar();
@@ -27,12 +47,65 @@ public class EditorSimple extends JFrame {
 
 
         fileMenu = new JMenu("Datei") {{
-            add(new JMenuItem("Neu"));
-            add(new JMenuItem("Öffnen"));
+            add(new JMenuItem("Neu") {{
+                addActionListener(f -> {
+                    textPane.setText("");
+                });
+            }});
+            add(new JMenuItem("Öffnen") {{
+                addActionListener(f -> {
+                    System.out.println("clicked");
+                    JFileChooser fc = new JFileChooser();
+                    fc.setFileFilter(new FileFilter() {
+
+                        @Override
+                        public boolean accept(File f) {
+                            return f.isDirectory() ||
+                                    f.getName().toLowerCase().endsWith(".txt");
+                        }
+
+                        @Override
+                        public String getDescription() {
+                            return "Text Files";
+                        }
+
+                    });
+
+                    int state = fc.showOpenDialog(scrollPane);
+
+                    if (state == JFileChooser.APPROVE_OPTION) {
+                        File file = fc.getSelectedFile();
+                        try {
+                            textPane.setPage(file.toURI().toURL());
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
+                    } else {
+                        System.out.println("No selection");
+                        System.exit(0);
+                    }
+
+                });
+            }});
             addSeparator();
-            add(new JMenuItem("Schließen"));
+            add(new JMenuItem("Schließen") {{
+                addActionListener(f -> System.exit(0));
+            }});
             addSeparator();
-            add(new JMenuItem("Speichern"));
+            add(new JMenuItem("Speichern") {{
+                addActionListener((ActionEvent f) -> {
+                    String text = textPane.getText();
+                    try (PrintStream printStream = new PrintStream(new File(textPane.getPage().toURI()))){
+                        printStream.print(text);
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    } catch (URISyntaxException e) {
+                        e.printStackTrace();
+                    }
+
+                });
+            }});
             add(new JMenuItem("Speichern unter..."));
             add(new JMenuItem("Als Webseite speichern"));
             add(new JMenuItem("Suchen"));
