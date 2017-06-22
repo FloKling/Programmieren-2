@@ -9,25 +9,18 @@ import java.util.List;
 
 public class MainApp extends JFrame {
 
+    public static final String FILE_NAME = "files/books.txt";
+    public static final String TEMP_FILE = "files/tempfilebook.txt";
     private static final String[] COLUMN_NAMES = {"Nr.", "Titel", "Autor", "Jahr", "Verleger"};
     private static final int FOOTER_HEIGHT = 40;
-    public static final String FILE_NAME = "myCollection.txt";
-    public static final String TEMP_FILE = "tempfile.txt";
-
-    private enum Dialog {
-        IS_LISTED, IS_MAYBE_LISTED, IS_EMPTY
-    }
-
     private List<Book> bookList;
     private Book bookCache;
     private int counter = 0;
-
     private JTable mainTable;
     private DefaultTableModel tableModel;
     private int[] prefSizes;
     private JPanel footerPanel;
     private JLabel elementCount;
-
     public MainApp() {
         bookList = new ArrayList<>();
 
@@ -47,6 +40,10 @@ public class MainApp extends JFrame {
 
         this.setVisible(true);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+    }
+
+    public static void main(String[] args) {
+        new MainApp();
     }
 
     private void addGUIElements() {
@@ -411,7 +408,7 @@ public class MainApp extends JFrame {
         }
     }
 
-    public static void main(String[] args) {
-        new MainApp();
+    private enum Dialog {
+        IS_LISTED, IS_MAYBE_LISTED, IS_EMPTY
     }
 }
