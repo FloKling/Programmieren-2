@@ -7,7 +7,6 @@
 *.iml
 out
 genw
-.gitignore
 src/main/resources/
 src/test/
 target/generated-sources/
