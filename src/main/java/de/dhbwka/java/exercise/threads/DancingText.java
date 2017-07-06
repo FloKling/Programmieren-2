@@ -2,7 +2,6 @@ package de.dhbwka.java.exercise.threads;
 
 import javax.swing.JComponent;
 import javax.swing.JFrame;
-import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -29,6 +28,7 @@ public class DancingText extends JFrame implements Runnable {
         Thread thread = new Thread(this);
         thread.start();
     }
+
 
     @Override
     public void run() {
