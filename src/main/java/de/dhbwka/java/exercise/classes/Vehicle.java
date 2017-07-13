@@ -4,12 +4,6 @@ public abstract class Vehicle {
     int numWheels = 0;
     double vCurr, vMax, currentPosition;
 
-    public abstract void info();
-
-    void drive(double time) {
-        currentPosition = currentPosition + (vCurr * time);
-    }
-
     public Vehicle(int numWheels, double vMax) {
         this.numWheels = numWheels;
         this.vMax = vMax;
@@ -19,6 +13,12 @@ public abstract class Vehicle {
         this.numWheels = numWheels;
         this.vCurr = vCurr;
         this.vMax = vMax;
+    }
+
+    public abstract void info();
+
+    void drive(double time) {
+        currentPosition = currentPosition + (vCurr * time);
     }
 
     public int getNumWheels() {
@@ -59,6 +59,8 @@ public abstract class Vehicle {
 
     @Override
     public String toString() {
+
+
         return "Vehicle{" +
                 "numWheels=" + numWheels +
                 ", vCurr=" + vCurr +

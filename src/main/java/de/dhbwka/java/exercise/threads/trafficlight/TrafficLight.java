@@ -18,7 +18,10 @@ public class TrafficLight extends JFrame implements Runnable {
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         Thread thread = new Thread(this);
         thread.start();
+    }
 
+    public static void main(String[] args) {
+        new TrafficLight();
     }
 
     @Override
@@ -26,47 +29,13 @@ public class TrafficLight extends JFrame implements Runnable {
         g.setColor(Color.BLACK);
         g.fillRect(10, 10, 40, 100);
 
-        switch (current) {
-            case GREEN:
-                g.setColor(Color.GRAY);
-                g.fillOval(10, 30, 20, 20);
-                g.setColor(Color.GRAY);
-                g.fillOval(10, 50, 20, 20);
-                g.setColor(Color.GREEN);
-                g.fillOval(10, 70, 20, 20);
-
-                break;
-            case YELLOW:
-                g.setColor(Color.GRAY);
-                g.fillOval(10, 30, 20, 20);
-                g.setColor(Color.YELLOW);
-                g.fillOval(10, 50, 20, 20);
-                g.setColor(Color.GRAY);
-                g.fillOval(10, 70, 20, 20);
-                break;
-            case YELLOW_RED:
-                g.setColor(Color.RED);
-                g.fillOval(10, 30, 20, 20);
-                g.setColor(Color.YELLOW);
-                g.fillOval(10, 50, 20, 20);
-                g.setColor(Color.GRAY);
-                g.fillOval(10, 70, 20, 20);
-                break;
-            case RED:
-                g.setColor(Color.RED);
-                g.fillOval(10, 30, 20, 20);
-                g.setColor(Color.GRAY);
-                g.fillOval(10, 50, 20, 20);
-                g.setColor(Color.GRAY);
-                g.fillOval(10, 70, 20, 20);
-                break;
-        }
+        g.setColor(current.isRed() ? Color.RED : Color.GRAY);
+        g.fillOval(10, 30, 20, 20);
+        g.setColor(current.isYellow() ? Color.YELLOW : Color.GRAY);
+        g.fillOval(10, 50, 20, 20);
+        g.setColor(current.isGreen() ? Color.GREEN : Color.GRAY);
+        g.fillOval(10, 70, 20, 20);
     }
-
-    public static void main(String[] args) {
-        new TrafficLight();
-    }
-
 
     @Override
     public void run() {

@@ -11,19 +11,19 @@ public enum LightPhase {
             return YELLOW;
         }
     },
-    YELLOW(true, false, false, 1) {
+    YELLOW(false, true, false, 1) {
         @Override
         public LightPhase nextPhase() {
             return RED;
         }
     },
-    RED(true, false, false, 1) {
+    RED(false, false, true, 1) {
         @Override
         public LightPhase nextPhase() {
             return YELLOW_RED;
         }
     },
-    YELLOW_RED(true, false, false, 1) {
+    YELLOW_RED(false, true, true, 1) {
         @Override
         public LightPhase nextPhase() {
             return GREEN;

@@ -1,5 +1,7 @@
 package de.dhbwka.java.exercise.classes;
 
+import com.google.gson.Gson;
+
 public class Race {
     public static void main(String[] args) {
         Vehicle[] vehicles = new Vehicle[4];
@@ -16,6 +18,10 @@ public class Race {
         for (int i = 0; i < vehicles.length; i++) {
             System.out.println(vehicles[i].toString());
         }
+
+        // GSON VARIANTE
+        Gson gson = new Gson();
+        System.out.println(gson.toJson(vehicles));
     }
 
 }
